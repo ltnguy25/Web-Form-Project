@@ -1,30 +1,54 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.IO;
 using System.Security.Cryptography;
-using System.Web;
+using System.Text;
 
 namespace WebFormProject.EncryptionService
 {
-    public class EncryptionPageDataProvider
-    {
-        // Declare CspParmeters and RsaCryptoServiceProvider
-        // objects with global scope of your Form class.
-        readonly CspParameters _cspp = new CspParameters();
-        RSACryptoServiceProvider _rsa;
+	public class EncryptionPageDataProvider
+	{
+        protected string Encrypt(string clearText)
+        {
+            string encryptionKey = "MAKV2SPBNI99212";
+            byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
+            using (Aes encryptor = Aes.Create())
+            {
+                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(encryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+                encryptor.Key = pdb.GetBytes(32);
+                encryptor.IV = pdb.GetBytes(16);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(clearBytes, 0, clearBytes.Length);
+                        cs.Close();
+                    }
+                    clearText = Convert.ToBase64String(ms.ToArray());
+                }
+            }
+            return clearText;
+        }
 
-        // Path variables for source, encryption, and
-        // decryption folders. Must end with a backslash.
-        const string EncrFolder = @"C:\Users\960134\source\Web Form Proj\WebFormProject\Encrypt\";
-        const string DecrFolder = @"C:\Users\960134\source\Web Form Proj\WebFormProject\Decrypt\";
-        const string SrcFolder = @"C:\Users\960134\source\Web Form Proj\WebFormProject\docs\";
-
-        // Public key file
-        const string PubKeyFile = @"C:\Users\960134\source\Web Form Proj\WebFormProject\Encrypt\rsaPublicKey.txt";
-
-        // Key container name for
-        // private/public key value pair.
-        const string KeyName = "Key01";
+        protected string Decrypt(string cipherText)
+        {
+            string encryptionKey = "MAKV2SPBNI99212";
+            byte[] cipherBytes = Convert.FromBase64String(cipherText);
+            using (Aes encryptor = Aes.Create())
+            {
+                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(encryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+                encryptor.Key = pdb.GetBytes(32);
+                encryptor.IV = pdb.GetBytes(16);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateDecryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(cipherBytes, 0, cipherBytes.Length);
+                        cs.Close();
+                    }
+                    cipherText = Encoding.Unicode.GetString(ms.ToArray());
+                }
+            }
+            return cipherText;
+        }
     }
 }

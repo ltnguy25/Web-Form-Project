@@ -95,6 +95,5 @@ namespace WebFormProject.EmployeeService
         {
             return ConfigurationManager.ConnectionStrings["WebFormProject"].ConnectionString;
         }
-
     }
 }
