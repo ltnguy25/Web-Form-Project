@@ -20,7 +20,7 @@
                     <asp:Label ID="lblEmployeeFirstName" runat="server" Font-Size="Medium" Text="First Name" Width="200px"></asp:Label>
                 </td>
                 <td style="width: 83%; height: 36px">
-                    <asp:TextBox ID="txtFirstName" runat="server" Width="250px"></asp:TextBox>
+                    <asp:TextBox ID="txtFirstName" runat="server" Width="250px" AutoPostBack="True" CausesValidation="True"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="FirstNameRequiredValidator" runat="server" ControlToValidate="txtFirstName" Display="None" ErrorMessage="First Name Required"></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="FirstNameLengthValidator" runat="server" ControlToValidate="txtFirstName" Display="None" ErrorMessage="First Name needs to be 2-100 characters" ValidationExpression="^.{2,100}$"></asp:RegularExpressionValidator>
                 </td>
@@ -30,7 +30,7 @@
                     <asp:Label ID="lblEmployeeLastName" runat="server" Font-Size="Medium" Text="Last Name" Width="200px"></asp:Label>
                 </td>
                 <td style="width: 83%">
-                    <asp:TextBox ID="txtLastName" runat="server" Width="250px"></asp:TextBox>
+                    <asp:TextBox ID="txtLastName" runat="server" Width="250px" AutoPostBack="True" CausesValidation="True"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="LastNameRequiredValidator" runat="server" ControlToValidate="txtLastName" Display="None" ErrorMessage="Last Name Required"></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="LastNameLengthValidator" runat="server" ControlToValidate="txtLastName" Display="None" ErrorMessage="Last Name needs to be 2-100 characters" ValidationExpression="^.{2,100}$"></asp:RegularExpressionValidator>
                 </td>
@@ -40,7 +40,7 @@
                     <asp:Label ID="lblEmployeeDOB" runat="server" Font-Size="Medium" Text="Date of Birth" Width="200px"></asp:Label>
                 </td>
                 <td style="width: 83%">
-                    <asp:TextBox ID="txtDOB" runat="server" Width="250px"></asp:TextBox>
+                    <asp:TextBox ID="txtDOB" runat="server" Width="250px" AutoPostBack="True" CausesValidation="True"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="DOBRequiredValidator" runat="server" ControlToValidate="txtDOB" Display="None" ErrorMessage="Date of Birth Required"></asp:RequiredFieldValidator>
                     <asp:CompareValidator ID="DOBTypeValidator" runat="server" ControlToValidate="txtDOB" Display="None" ErrorMessage="Use mm/dd/yyyy format" Operator="DataTypeCheck" Type="Date"></asp:CompareValidator>
                 </td>
@@ -50,7 +50,7 @@
                     <asp:Label ID="lblEmployeeEmail" runat="server" Font-Size="Medium" Text="Email" Width="200px"></asp:Label>
                 </td>
                 <td style="width: 83%; height: 36px">
-                    <asp:TextBox ID="txtEmail" runat="server" Width="250px"></asp:TextBox>
+                    <asp:TextBox ID="txtEmail" runat="server" Width="250px" AutoPostBack="True" CausesValidation="True"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="EmailRequiredValidator" runat="server" ControlToValidate="txtEmail" Display="None" ErrorMessage="Email Required"></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="EmailFormatValidator" runat="server" ControlToValidate="txtEmail" Display="None" ErrorMessage="Enter a valid email address" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                 </td>
@@ -60,7 +60,7 @@
                     <asp:Label ID="lblEmployeePhone" runat="server" Font-Size="Medium" Text="Phone Number" Width="200px"></asp:Label>
                 </td>
                 <td style="width: 83%">
-                    <asp:TextBox ID="txtPhone" runat="server" Width="250px"></asp:TextBox>
+                    <asp:TextBox ID="txtPhone" runat="server" Width="250px" AutoPostBack="True" CausesValidation="True"></asp:TextBox>
                     <asp:RegularExpressionValidator ID="PhoneFormatValidator" runat="server" ControlToValidate="txtPhone" Display="None" ErrorMessage="Enter 10 digit phone number without dashes" ValidationExpression="^[0-9]{10}$"></asp:RegularExpressionValidator>
                 </td>
             </tr>
@@ -69,7 +69,7 @@
                     <asp:Label ID="lblEmployeeStartDate" runat="server" Font-Size="Medium" Text="Start Date" Width="200px"></asp:Label>
                 </td>
                 <td style="width: 83%">
-                    <asp:TextBox ID="txtStartDate" runat="server" Width="250px"></asp:TextBox>
+                    <asp:TextBox ID="txtStartDate" runat="server" Width="250px" AutoPostBack="True" CausesValidation="True"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="StartDateRequiredValidator" runat="server" ControlToValidate="txtStartDate" Display="None" ErrorMessage="Start Date Required"></asp:RequiredFieldValidator>
                     <asp:CompareValidator ID="StartDateTypeValidator" runat="server" ControlToValidate="txtStartDate" Display="None" ErrorMessage="Use mm/dd/yyyy format" Operator="DataTypeCheck" Type="Date"></asp:CompareValidator>
                 </td>

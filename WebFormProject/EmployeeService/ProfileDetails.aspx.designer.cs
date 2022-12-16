@@ -15,24 +15,6 @@ namespace WebFormProject.EmployeeService
     {
 
         /// <summary>
-        /// lblEmployeeId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmployeeId;
-
-        /// <summary>
-        /// lblFirstName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFirstName;
-
-        /// <summary>
         /// txtFirstName control.
         /// </summary>
         /// <remarks>
@@ -49,15 +31,6 @@ namespace WebFormProject.EmployeeService
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator FirstNameLengthValidator;
-
-        /// <summary>
-        /// lblLastName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLastName;
 
         /// <summary>
         /// txtLastName control.
@@ -78,15 +51,6 @@ namespace WebFormProject.EmployeeService
         protected global::System.Web.UI.WebControls.RegularExpressionValidator LastNameLengthValidator;
 
         /// <summary>
-        /// lblDOB control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDOB;
-
-        /// <summary>
         /// txtDOB control.
         /// </summary>
         /// <remarks>
@@ -103,15 +67,6 @@ namespace WebFormProject.EmployeeService
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator DOBRegularExpressionValidator;
-
-        /// <summary>
-        /// lblEmail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmail;
 
         /// <summary>
         /// txtEmail control.
@@ -132,15 +87,6 @@ namespace WebFormProject.EmployeeService
         protected global::System.Web.UI.WebControls.RegularExpressionValidator EmailFormatValidator;
 
         /// <summary>
-        /// lblPhoneNumber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPhoneNumber;
-
-        /// <summary>
         /// txtPhoneNumber control.
         /// </summary>
         /// <remarks>
@@ -157,15 +103,6 @@ namespace WebFormProject.EmployeeService
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator PhoneFormatValidator;
-
-        /// <summary>
-        /// lblStartDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblStartDate;
 
         /// <summary>
         /// txtStartDate control.

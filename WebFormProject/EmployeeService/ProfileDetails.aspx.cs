@@ -10,14 +10,13 @@ namespace WebFormProject.EmployeeService
 {
     public partial class ProfileDetails : System.Web.UI.Page
     {
-        string employeeID;
+        private string _employeeID;
         protected void Page_Load(object sender, EventArgs e)
         {
+            _employeeID = Request.QueryString["ID"];
             if (!IsPostBack)
             {
-                employeeID = Request.QueryString["ID"];
                 GetEmployeeById();
-
             }
         }
         /// <summary>
@@ -32,29 +31,16 @@ namespace WebFormProject.EmployeeService
                 using (SqlCommand cmdSearch = new SqlCommand("EmployeeSearchById", connection))
                 {
                     cmdSearch.CommandType = CommandType.StoredProcedure;
-                    cmdSearch.Parameters.AddWithValue("@ID", int.Parse(employeeID));
+                    cmdSearch.Parameters.AddWithValue("@ID", int.Parse(_employeeID));
                     using (SqlDataAdapter adapter = new SqlDataAdapter(cmdSearch))
                     {
                         DataTable dt = new DataTable();
                         adapter.Fill(dt);
-                        lblEmployeeId.Text = employeeID;
-
-                        lblFirstName.Text = dt.Rows[0]["FirstName"].ToString();
                         txtFirstName.Text = dt.Rows[0]["FirstName"].ToString();
-
-                        lblLastName.Text = dt.Rows[0]["LastName"].ToString();
                         txtLastName.Text = dt.Rows[0]["LastName"].ToString();
-
-                        lblDOB.Text = dt.Rows[0]["DOB"].ToString();
                         txtDOB.Text = dt.Rows[0]["DOB"].ToString();
-
-                        lblEmail.Text = dt.Rows[0]["Email"].ToString();
                         txtEmail.Text = dt.Rows[0]["Email"].ToString();
-
-                        lblPhoneNumber.Text = dt.Rows[0]["PhoneNumber"].ToString();
                         txtPhoneNumber.Text = dt.Rows[0]["PhoneNumber"].ToString();
-
-                        lblStartDate.Text = dt.Rows[0]["StartDate"].ToString();
                         txtStartDate.Text = dt.Rows[0]["StartDate"].ToString();
                     }
                 }
@@ -69,12 +55,12 @@ namespace WebFormProject.EmployeeService
         /// <param name="e"></param>
         protected void btnEdit_Click(object sender, EventArgs e)
         {
-            txtFirstName.Visible = !txtFirstName.Visible;
-            txtLastName.Visible = !txtLastName.Visible;
-            txtDOB.Visible = !txtDOB.Visible;
-            txtEmail.Visible = !txtEmail.Visible;
-            txtPhoneNumber.Visible = !txtPhoneNumber.Visible;
-            txtStartDate.Visible = !txtStartDate.Visible;
+            txtFirstName.ReadOnly = !txtFirstName.ReadOnly;
+            txtLastName.ReadOnly = !txtLastName.ReadOnly;
+            txtDOB.ReadOnly = !txtDOB.ReadOnly;
+            txtEmail.ReadOnly = !txtEmail.ReadOnly;
+            txtPhoneNumber.ReadOnly = !txtPhoneNumber.ReadOnly;
+            txtStartDate.ReadOnly = !txtStartDate.ReadOnly;
             btnSave.Visible = !btnSave.Visible;
             btnDelete.Visible = !btnDelete.Visible;
         }
@@ -115,7 +101,7 @@ namespace WebFormProject.EmployeeService
             {
                 Employee newEmployeeInfo = new Employee
                 {
-                    ID = int.Parse(lblEmployeeId.Text),
+                    ID = int.Parse(_employeeID),
                     FirstName = txtFirstName.Text,
                     LastName = txtLastName.Text,
                     DOB = DateTime.Parse(txtDOB.Text),
@@ -145,7 +131,7 @@ namespace WebFormProject.EmployeeService
                 using (SqlCommand cmdDelete = new SqlCommand("EmployeeDelete", connection))
                 {
                     cmdDelete.CommandType = CommandType.StoredProcedure;
-                    cmdDelete.Parameters.AddWithValue("@ID", int.Parse(lblEmployeeId.Text));
+                    cmdDelete.Parameters.AddWithValue("@ID", int.Parse(_employeeID));
                     cmdDelete.ExecuteNonQuery();
                     Response.Redirect("EmployeeRecord.aspx");
                 }

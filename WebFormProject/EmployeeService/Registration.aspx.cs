@@ -4,6 +4,8 @@ using System.Data.SqlClient;
 using System.Data;
 using WebFormProject.Models;
 using System.Configuration;
+using System.Data.Entity;
+using System.Linq;
 
 namespace WebFormProject.EmployeeService
 {
@@ -29,7 +31,26 @@ namespace WebFormProject.EmployeeService
                     PhoneNumber = txtPhone.Text,
                     StartDate = DateTime.Parse(txtStartDate.Text)
                 };
-                InsertEmployee(newEmployee);
+                using (SqlConnection connection = new SqlConnection(GetConnectionString()))
+                {
+                    connection.Open();
+                    using (SqlCommand cmdCheck = new SqlCommand("EmployeeDuplicateCheck", connection))
+                    {
+                        cmdCheck.CommandType = CommandType.StoredProcedure;
+                        cmdCheck.Parameters.AddWithValue("@FirstName", newEmployee.FirstName);
+                        cmdCheck.Parameters.AddWithValue("@LastName", newEmployee.LastName);
+                        cmdCheck.Parameters.AddWithValue("@DOB", newEmployee.DOB);
+                        int duplicateResult = (int) cmdCheck.ExecuteScalar();
+                        if (duplicateResult == 0)
+                        {
+                            InsertEmployee(newEmployee);
+                        }
+                        else
+                        {
+                            Response.Write("<script>alert('Employee Already Exists');</script>");
+                        }
+                    }
+                }
             }
             else
             {
